@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+   <meta charset="utf-8">
+   <title>demo of websocket</title>
+	
+      <script type="text/javascript">
+         function run()
+         {
+               var ws = new WebSocket("ws://192.168.1.38:8088/echo");
+               ws.onopen = function()
+               {
+                  var msg="from client!";
+                  ws.send(msg);
+                  console.log("发送数据："+msg);
+               };
+               ws.onmessage = function (evt) 
+               { 
+                  var received_msg = evt.data;
+                  console.log("接受数据："+received_msg);
+               };
+         }
+            
+      </script>
+		
+   </head>
+   <body>
+   
+      <div id="sse">
+         <a href="javascript:run()"> WebSocket  run</a>
+      </div>
+      
+   </body>
+</html>
