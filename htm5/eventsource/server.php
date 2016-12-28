@@ -1,7 +1,8 @@
 <?php
-header('Content-Type textevent-stream');
-header('Cache-Control no-cache');
+header('Content-Type:text/event-stream');
+header('Cache-Control:no-cache');
 
 $time = date('r');
-echo data The server time is {$time}nn;
+//两个换行
+echo "data: The server time is: {$time}\n\n";
 flush();

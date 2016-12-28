@@ -4,14 +4,15 @@
 	<title></title>
 </head>
 <body>
+<div id="result"></div>
 <script type="text/javascript">
 	
 var source=new EventSource("server.php");
 source.onmessage=function(event)
-  {
+{
+  console.log(event.data);
   document.getElementById("result").innerHTML+=event.data + "<br />";
-  };
-
+};
 </script>
 </body>
 </html>
