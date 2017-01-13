@@ -1,0 +1,39 @@
+import homeIndex from './page/home/index.vue'
+import login from './page/loginAndRegister/login.vue'
+import regandlog from './page/loginAndRegister/regandlog.vue'
+import homeRightDefault from './page/home/body_right.vue'
+import homeRightTest from './page/home/body_right_2.vue'
+
+const  approuter2=[
+    {
+	path:'/home',
+        component:homeIndex,
+	children:[
+	    {
+		path:'default',
+		component:homeRightDefault
+	    },
+	    {
+		path:'test',
+		component:homeRightTest
+	    }
+	]
+	
+	
+   },
+  {
+      path:'/regandlog',
+      component:regandlog,
+      children:[
+	  {
+	      path:'login',
+	      component:login
+	  }
+      ]
+  }   
+]
+
+
+export default approuter2
+
+

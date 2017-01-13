@@ -1,0 +1,103 @@
+<template>
+ <div class="col-sm-9  col-md-10  main selfcss">
+          <h2 class="sub-header">Test1 title</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th v-for="item in theads">{{item.name}}</th>
+		  <th >操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="item in tbodys">
+
+                  <td >{{item.id}}</td>
+                  <td >{{item.nickname}}</td>
+		  <td >{{item.phone}}</td>
+
+		   <td ><a href="#/home/test1/edit/1">编辑</a></td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+
+
+<nav>
+  <ul class="pagination">
+    <li v-if="showPrev"><a href="#">&laquo;</a></li>
+    <li v-for="item in pages"><a href="#" v-on:click.prevent="pager">{{item.num}}</a></li>
+    <li v-if="showNext"><a href="#">&raquo;</a></li>
+  </ul>
+</nav>
+
+
+  </div>
+</div>
+</template>
+
+<script>
+ 
+
+export default{
+       data(){
+       //初始化数据
+       var tbodysinit=[];
+       this.$http.get('/data/user/list?page=1').then(
+       	  (response)=>{
+		response.body.data.forEach(function(val,index,reslult){
+			tbodysinit.push(val);		
+		});		
+	  },
+	  (error)=>{
+
+	  }
+	  );
+    
+	
+	return{
+		theads:[
+			{name:'id'},
+			{name:'name'},
+			{name:'phone'}
+			],
+		tbodys:tbodysinit,
+		pages:[
+			{num:1},
+			{num:2},
+			{num:3},
+			{num:4},
+			{num:5}
+		],
+		showPrev:true,
+		showNext:false
+		 
+	}
+       }       
+       ,
+       methods:{
+		pager(el){
+			var num=el.target.firstChild.nodeValue;
+			console.log(num);
+			 var tbody=[];
+       			 this.$http.get('/data/user/list?page='+num).then(
+          		 (response)=>{
+                	 response.body.data.forEach(function(val,index,reslult){
+				tbody.push(val);
+                	 });
+          		 },
+          		 (error)=>{
+
+          		 }
+          		 );
+			this.$data.tbodys=tbody;
+		}
+       }
+}
+</script>
+<style rel="stylesheet/less" lang="less">
+.selfcss{
+	border-left-style:groove
+}
+</style>

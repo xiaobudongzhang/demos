@@ -1,0 +1,41 @@
+{
+  "name": "tz-vue",
+  "version": "1.0.0",
+  "description": "vue manager",
+  "main": "sim.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --host 192.168.1.38 --port 8080 --open --inline --hot",
+    "testdev": "webpack",
+    "build": "NODE_ENV=production webpack --config ./webpack.pro.config.js --progress"
+  },
+  "keywords": [
+    "vue"
+  ],
+  "author": "byz",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.5.4",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "cross-env": "^3.1.3",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.24.1",
+    "node-sass": "^4.1.0",
+    "page": "^1.7.1",
+    "postcss-loader": "^1.2.1",
+    "sass-loader": "^4.1.0",
+    "vue-loader": "^10.0.2",
+    "vue-router": "^2.1.1",
+    "vue-template-compiler": "^2.1.6"
+  },
+  "dependencies": {
+    "json-loader": "^0.5.4",
+    "vue": "^2.1.6",
+    "vue-loader": "^10.0.2",
+    "vue-router": "^2.1.1"
+  }
+}
